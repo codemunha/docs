@@ -1,0 +1,82 @@
+{
+  "name": "los-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "sync": "./init.bat",
+    "sync:sh": "./init.sh",
+    "update": "yarn upgrade dsl-core",
+    "serve": "vue-cli-service serve",
+    "serve:dev": "vue-cli-service serve --mode dev --modern",
+    "serve:sit": "vue-cli-service serve --mode devsit --modern",
+    "build": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode serverdev --modern",
+    "build:sit": "vue-cli-service build --mode serversit --modern",
+    "lint": "vue-cli-service lint",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit",
+    "push": "git add . && git commit -m 'birdupdate' && git push",
+    "push:sit": "git add . && git commit -m 'deploy-SIT' && git push",
+    "full": "yarn sync && yarn update && yarn serve:dev",
+    "full:sh": "yarn sync:sh && yarn update && yarn serve:dev",
+    "fix-js": "eslint-auto-fix",
+    "deploy:sit": "./deploy-sit.bat"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^2.6.5",
+    "dompurify": "^2.0.6",
+    "dsl-core": "file:core/dsl-core",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
+    "marked": "^0.7.0",
+    "moment": "^2.24.0",
+    "numeral": "^2.0.6",
+    "vue": "^2.6.10",
+    "vue-i18n": "^8.11.2",
+    "vue-markdown": "^2.2.4",
+    "vue-markdown-loader": "^2.4.1",
+    "vue-router": "^3.0.6",
+    "vue-zoomer": "^0.3.6",
+    "vue2-editor": "^2.10.2",
+    "vuex": "^3.1.0",
+    "vuex-persist": "^2.0.1",
+    "webstomp-client": "^1.2.6",
+    "xlsx": "^0.15.1"
+  },
+  "devDependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@dsb-norge/vue-keycloak-js": "^1.1.1",
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-plugin-unit-jest": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^5.16.0",
+    "eslint-auto-fix": "^1.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "iview-loader": "^1.2.2",
+    "json-server": "^0.15.1",
+    "less": "^3.10.1",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^8.1.5",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
